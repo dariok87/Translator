@@ -1,16 +1,20 @@
-import React from 'react';
+import './styles.css';
+import React, { useState } from 'react';
 import Field from './components/field';
 import Languages from './components/languages';
 import Translate from './components/translate';
 
 export default function App() {
+  const [language, setLanguage] = useState('ru')
+  const [text, setText] = useState('');
+
   return (
     <div>
       <h1>
-        <Field />
-        <Languages />
+        <Field label="Enter English" onChange={setText} value={text} />
+        <Languages language={language} onLanguageChange={setLanguage} />
         <hr />
-        <Translate />
+        <Translate text={text} language={setLanguage} />
       </h1>
     </div>
   );
